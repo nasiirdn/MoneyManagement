@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formModal = document.getElementById('formModal');
     const transactionForm = document.getElementById('transactionForm');
     const transactionTable = document.getElementById('transactionTable').getElementsByTagName('tbody')[0];
-
+    const setInitialBalanceBtn = document.getElementById('setInitialBalanceBtn');
     const totalIncomeElement = document.getElementById('totalIncome');
     const totalExpenseElement = document.getElementById('totalExpense');
     const totalBalanceElement = document.getElementById('totalBalance');
@@ -38,6 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close form modal
     closeFormBtn.addEventListener('click', () => {
         formModal.style.display = 'none';
+    });
+
+    setInitialBalanceBtn.addEventListener('click', () => {
+        const saldoInput = prompt("Masukkan Saldo Awal:");
+
+        if (saldoInput) {
+            initialBalance = parseFloat(saldoInput);
+            set(ref(database, 'initialBalance'), initialBalance);
+            alert(`Saldo Awal telah diset ke Rp ${initialBalance.toLocaleString()}`);
+            updateDashboard(); // Memperbarui sisa saldo di dashboard
+        }
     });
 
     // Submit form and add transaction
