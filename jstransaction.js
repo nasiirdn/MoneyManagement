@@ -19,7 +19,6 @@ const database = getDatabase(app);
 
 document.addEventListener('DOMContentLoaded', () => {
     const openFormBtn = document.getElementById('openFormBtn');
-    const setInitialBalanceBtn = document.getElementById('setInitialBalanceBtn');
     const closeFormBtn = document.getElementById('closeFormBtn');
     const formModal = document.getElementById('formModal');
     const transactionForm = document.getElementById('transactionForm');
@@ -27,10 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const totalIncomeElement = document.getElementById('totalIncome');
     const totalExpenseElement = document.getElementById('totalExpense');
-    const saldoSisaElement = document.getElementById('saldoSisa');
+    const totalBalanceElement = document.getElementById('totalBalance');
 
     let transactions = {};
-    let initialBalance = 0;
 
     // Open form modal
     openFormBtn.addEventListener('click', () => {
@@ -42,18 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         formModal.style.display = 'none';
     });
 
-    // Set initial balance
-    setInitialBalanceBtn.addEventListener('click', () => {
-        const saldoInput = prompt("Masukkan Saldo Awal:");
-
-        if (saldoInput) {
-            initialBalance = parseFloat(saldoInput);
-            set(ref(database, 'initialBalance'), initialBalance);
-            alert(`Saldo Awal telah diset ke Rp ${initialBalance.toLocaleString()}`);
-            updateDashboard(); // Memperbarui sisa saldo di dashboard
-        }
-    });
-
     // Submit form and add transaction
     transactionForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -63,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const kategori = document.getElementById('kategori').value;
         const subKategori = document.getElementById('subKategori').value;
         const pembayaran = document.getElementById('pembayaran').value;
-        const nominal = parseFloat(document.getElementById('nominal').value);
+        const nominal = document.getElementById('nominal').value;
         const keterangan = document.getElementById('keterangan').value;
 
         const transactionData = {
@@ -71,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             kategori,
             subKategori,
             pembayaran,
-            nominal,
+            nominal: parseFloat(nominal),
             keterangan
         };
 
@@ -81,15 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         formModal.style.display = 'none';
     });
 
-     // Retrieve initial balance from Firebase
-     onValue(ref(database, 'initialBalance'), (snapshot) => {
-        initialBalance = snapshot.val() || 0;
-        updateDashboard();
-    });
-
-    // Retrieve transactions from Firebase
+    // Retrieve transactions from Firebase and update table
     onValue(ref(database, 'transactions'), (snapshot) => {
         transactions = snapshot.val() || {};
+        updateTransactionTable();
         updateDashboard();
     });
 
@@ -125,7 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        const totalBalance = initialBalance + totalIncome - totalExpense;
-        saldoSisaElement.textContent = `Rp ${totalBalance.toLocaleString()}`;
+        const totalBalance = totalIncome - totalExpense;
+
+        totalIncomeElement.textContent = Rp `${totalIncome.toLocaleString()}`;
+        totalExpenseElement.textContent = Rp `${totalExpense.toLocaleString()}`;
+        totalBalanceElement.textContent = Rp `${totalBalance.toLocaleString()}`;
     }
 });
