@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (saldoInput) {
             initialBalance = parseFloat(saldoInput);
             set(ref(database, 'initialBalance'), initialBalance);
-            alert(`Saldo Awal telah diset ke Rp ${initialBalance.toLocaleString()}`);
+            alert(Saldo Awal telah diset ke Rp ${initialBalance.toLocaleString()});
             updateDashboard(); // Memperbarui sisa saldo di dashboard
         }
     });
@@ -81,15 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
         formModal.style.display = 'none';
     });
 
-     // Retrieve initial balance from Firebase
-     onValue(ref(database, 'initialBalance'), (snapshot) => {
-        initialBalance = snapshot.val() || 0;
+    // Retrieve transactions and initial balance from Firebase and update table
+    onValue(ref(database, 'transactions'), (snapshot) => {
+        transactions = snapshot.val() || {};
+        updateTransactionTable();
         updateDashboard();
     });
 
-    // Retrieve transactions from Firebase
-    onValue(ref(database, 'transactions'), (snapshot) => {
-        transactions = snapshot.val() || {};
+    // Retrieve initial balance from Firebase
+    onValue(ref(database, 'initialBalance'), (snapshot) => {
+        initialBalance = snapshot.val() || 0;
         updateDashboard();
     });
 
@@ -101,14 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const { tanggal, kategori, subKategori, pembayaran, nominal, keterangan } = transactions[key];
 
             const newRow = transactionTable.insertRow();
-            newRow.innerHTML = `
+            newRow.innerHTML = 
                 <td>${tanggal}</td>
                 <td>${kategori}</td>
                 <td>${subKategori}</td>
                 <td>${pembayaran}</td>
                 <td>Rp ${nominal.toLocaleString()}</td>
                 <td>${keterangan}</td>
-            `;
+            ;
         });
     }
 
@@ -126,6 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const totalBalance = initialBalance + totalIncome - totalExpense;
-        saldoSisaElement.textContent = `Rp ${totalBalance.toLocaleString()}`;
+    console.log('Total Income:', totalIncome);
+    console.log('Total Expense:', totalExpense);
+    console.log('Initial Balance:', initialBalance);
+    console.log('Total Balance:', totalBalance);
+
+    totalIncomeElement.textContent = Rp ${totalIncome.toLocaleString()};
+    totalExpenseElement.textContent = Rp ${totalExpense.toLocaleString()};
+    saldoSisaElement.textContent = Rp ${totalBalance.toLocaleString()};
     }
 });
