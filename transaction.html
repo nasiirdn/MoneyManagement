@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Manager Transaction</title>
+    <link rel="stylesheet" href="styletransaction.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="brand">
+                <img src="image/brand-color.png" alt="Logo" class="logo">
+                <h1>MyMoney</h1>
+            </div>
+            <ul class="nav">
+                <li><a href="dashboard.html" class="Dashover"><img src="image/dashboard-color.png" alt="Ikon Dashboard"> Dashboard</a></li>
+                <li><a href="#" class="Trahover"><img src="image/transaction-color.png" alt="Ikon Transaksi"> Transaksi</a></li>
+                <li><a href="report.html" class="Rephover"><img src="image/report-color.png" alt="Ikon Laporan"> Laporan</a></li>
+                <li><a href="setting.html" class="Sethover"><img src="image/setting-color.png" alt="Ikon Pengaturan"> Pengaturan</a></li>
+            </ul>
+            <button class="exit-btn">Exit</button>
+        </div>
+
+        <!-- Konten Utama -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Transaksi</h1>
+            </div>
+
+            <div class="button-container">
+                <button id="openFormBtn">Tambah Transaksi</button>
+                <button id="setInitialBalanceBtn">Set Saldo Awal</button>
+            </div>
+            
+
+            <!-- Form Modal -->
+            <div id="formModal" class="form-modal">
+                <div class="form-container">
+                    <span id="closeFormBtn">&times;</span>
+                    <h2>Tambah Transaksi</h2>
+                    <form id="transactionForm">
+                        <label for="tanggal">Tanggal:</label>
+                        <input type="date" id="tanggal" required>
+
+                        <label for="kategori">Kategori:</label>
+                        <select id="kategori" required>
+                            <option value="Pemasukan">Pemasukan</option>
+                            <option value="Pengeluaran">Pengeluaran</option>
+                            <option value="Transfer">Transfer</option>
+                        </select>
+
+                        <label for="subKategori">Sub Kategori:</label>
+                        <select id="subKategori" required>
+                            <option value="Cash">Cash</option>
+                            <option value="Makanan">Makanan</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+
+                        <label for="pembayaran">Pembayaran:</label>
+                        <select id="pembayaran" required>
+                            <option value="Cash">Cash</option>
+                            <option value="BRI">BRI</option>
+                            <option value="Wallet">Wallet</option>
+                        </select>
+
+                        <label for="nominal">Nominal:</label>
+                        <input type="number" id="nominal" required>
+
+                        <label for="keterangan">Keterangan:</label>
+                        <input type="text" id="keterangan">
+
+                        <button type="submit">Kirim</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tabel Transaksi -->
+            <div class="table-container"><table id="transactionTable">
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Kategori</th>
+                        <th>Sub Kategori</th>
+                        <th>Pembayaran</th>
+                        <th>Nominal</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Baris akan diisi oleh JS -->
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+
+    <script src="jstransaction.js" type="module"></script>
+</body>
+</html>

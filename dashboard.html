@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Manager Dashboard</title>
+    <link rel="stylesheet" href="styledashboard.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="brand">
+                <img src="image/brand-color.png" alt="Logo" class="logo">
+                <h1>MyMoney</h1>
+            </div>
+            <ul class="nav">
+                <li><a href="#" class="Dashover"><img src="image/dashboard-color.png" alt="Ikon Dashboard"> Dashboard</a></li>
+                <li><a href="transaction.html" class="Trahover"><img src="image/transaction-color.png" alt="Ikon Transaksi"> Transaksi</a></li>
+                <li><a href="report.html" class="Rephover"><img src="image/report-color.png" alt="Ikon Laporan"> Laporan</a></li>
+                <li><a href="setting.html" class="Sethover"><img src="image/setting-color.png" alt="Ikon Pengaturan"> Pengaturan</a></li>
+            </ul>
+            <button class="exit-btn">Exit</button>
+        </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Dashboard</h1>
+        </div>
+
+        <div class="content">
+            <div class="card saldo-sisa">
+                <h3>Sisa Saldo</h3>
+                <p id="saldoSisa">Maaf maintenance dulu</p>
+            </div>
+
+            <div class="card recent-activities">
+                <h3>Recent Activities</h3>
+                <ul id="recentActivities">
+                    <!-- List of activities will be populated here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="jstransaction.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #8c8282;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #332e34;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #181818;
+    color: #fff;
+    padding: 20px;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Brand Container */
+.sidebar .brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Brand Logo */
+.sidebar .brand .logo {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.sidebar .brand h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Navigation Styles */
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav li {
+    margin-bottom: 20px;
+}
+
+.sidebar .nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .nav a img {
+    width: 24px;
+    margin-right: 10px;
+}
+
+.sidebar .nav a:hover {
+    background-color: #424242;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+
+/* Exit Button Styles */
+.exit-btn {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ef5f33;
+    color: #fff;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 50px; /* Menempatkan tombol di bagian bawah */
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #efa893;
+}
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #3a333a;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 300px;
+    max-width: calc(50% - 10px);
+    box-sizing: border-box;
+}
+
+/* Saldo Sisa Styles */
+.saldo-sisa h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #ffac41;
+    text-align: center;
+}
+
+.saldo-sisa p {
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Recent Activities Styles */
+.recent-activities h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #ffac41;
+}
+
+.recent-activities ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-activities ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
